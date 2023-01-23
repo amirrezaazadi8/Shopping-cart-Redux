@@ -1,4 +1,5 @@
 import './App.css';
+import { Provider } from 'react-redux';
 import { Route, Switch, Redirect } from "react-router-dom";
 
 // Components
@@ -7,23 +8,20 @@ import ProductDetails from './components/ProductDetails';
 import Navbar from './components/shared/Navbar';
 import ShopCart from './components/ShopCart';
 
-// Context
-import ProductContextProvider from './context/ProductContextProvider';
-import CartContextProvider from './context/CartContextProvider';
+// Redux
+import store from './redux/Store';
 
 function App() {
   return (
-    <ProductContextProvider>
-      <CartContextProvider>
-        <Navbar />
-        <Switch>
-          <Route path="/products/:id" component={ProductDetails} />
-          <Route path="/products" component={Store} />
-          <Route path="/cart" component={ShopCart} />
-          <Redirect to="/products" />
-        </Switch>
-      </CartContextProvider>
-    </ProductContextProvider>
+    <Provider store={store}>
+      <Navbar />
+      <Switch>
+        <Route path="/products/:id" component={ProductDetails} />
+        <Route path="/products" component={Store} />
+        <Route path="/cart" component={ShopCart} />
+        <Redirect to="/products" />
+      </Switch>
+    </Provider>
   );
 }
 
