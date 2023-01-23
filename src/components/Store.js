@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Product from './shared/Product';
 
 // Redux
-import fetchProducts from '../redux/products/productsAction';
+import { fetchProducts } from '../redux/products/productsAction';
 
 // Style
 import styles from "./Store.module.css";
@@ -20,18 +20,19 @@ const Store = () => {
     }, [])
 
     return (
-        <div className={styles.container} >
+        <div className={styles.container}>
             {
-                productsState.loading
-                    ? <h2>loading ...</h2>
-                    : productsState.error
-                        ? <p>something is wrong!</p>
-                        : productsState.Products.map(product =>
+                productsState.loading ?
+                    <h2>loading ...</h2> :
+                    productsState.error ?
+                        <p>something is wrong!</p> :
+                        productsState.products.map(product =>
                             <Product
-                                key={productsState.id}
+                                key={product.id}
                                 productData={product}
                             />
                         )
+
             }
         </div>
     );

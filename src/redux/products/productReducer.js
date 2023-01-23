@@ -14,7 +14,6 @@ const productsReducer = (state = initialState, { type, payload }) => {
 
         case "FETCH_PRODUCTS_SUCCESS":
             return {
-                ...state,
                 loading: false,
                 products: payload
             }
