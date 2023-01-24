@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Components
 import Product from './shared/Product';
+import Loader from './shared/Loader';
 
 // Redux
 import { fetchProducts } from '../redux/products/productsAction';
@@ -25,7 +26,7 @@ const Store = () => {
         <div className={styles.container}>
             {
                 productsState.loading ?
-                    <h2>loading ...</h2> :
+                    <Loader /> :
                     productsState.error ?
                         <p>something is wrong!</p> :
                         productsState.products.map(product =>
