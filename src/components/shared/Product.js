@@ -12,7 +12,7 @@ import { shorten, isInCart, quantityCount } from '../../helper/functions';
 import trashIcon from "../../assets/icons/trash.svg";
 
 //reduxActions
-import { addItem, removeItem, increase, decrease, checkOut, clear } from '../../redux/cart/cartAction';
+import { addItem, removeItem, increase, decrease, } from '../../redux/cart/cartAction';
 
 // Style
 import styles from "./Product.module.css";
